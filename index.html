@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Cooking App - Chef Master AI</title>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <link rel="stylesheet" href="ai-style.css" /> 
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="auth-screen" class="auth-screen">
+    <div class="auth-background">
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
+    </div>
+    
+    <div class="auth-container">
+      <div class="auth-logo">
+        <i class="fas fa-utensils"></i>
+      </div>
+      <h1 class="auth-title">Cooking App</h1>
+      <p class="auth-subtitle">with Chef Master AI</p>
+      
+      <div id="login-form" class="auth-form">
+        <h2>Welcome Back!</h2>
+        <p class="form-desc">Sign in to continue cooking</p>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="login-email" placeholder="Email Address" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="login-password" placeholder="Password" required />
+        </div>
+        <button id="forgot-password-link" class="text-link">Forgot Password?</button>
+        <button id="login-btn" class="auth-btn primary-btn">
+          <i class="fas fa-sign-in-alt"></i>
+          <span>Sign In</span>
+        </button>
+        <div class="divider"><span>OR</span></div>
+        <button id="google-login-btn" class="auth-btn google-btn">
+          <i class="fab fa-google"></i>
+          <span>Continue with Google</span>
+        </button>
+        <p class="switch-form">
+          Don't have an account? 
+          <button id="show-signup-btn" class="text-link">Sign Up</button>
+        </p>
+      </div>
+      
+      <div id="signup-form" class="auth-form" style="display: none;">
+        <h2>Create Account</h2>
+        <p class="form-desc">Join the cooking community</p>
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" id="signup-name" placeholder="Full Name" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="signup-email" placeholder="Email Address" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="signup-password" placeholder="Password (min 6 characters)" required />
+        </div>
+        <button id="signup-btn" class="auth-btn primary-btn">
+          <i class="fas fa-user-plus"></i>
+          <span>Sign Up</span>
+        </button>
+        <div class="divider"><span>OR</span></div>
+        <button id="google-signup-btn" class="auth-btn google-btn">
+          <i class="fab fa-google"></i>
+          <span>Sign Up with Google</span>
+        </button>
+        <p class="switch-form">
+          Already have an account? 
+          <button id="show-login-btn" class="text-link">Sign In</button>
+        </p>
+      </div>
+
+      <div id="forgot-password-form" class="auth-form" style="display: none;">
+        <h2>Reset Password</h2>
+        <p class="form-desc">Enter your email to reset password</p>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="reset-email" placeholder="Email Address" required />
+        </div>
+        <button id="reset-password-btn" class="auth-btn primary-btn">
+          <i class="fas fa-paper-plane"></i>
+          <span>Send Reset Link</span>
+        </button>
+        <p class="switch-form">
+          Remember your password? 
+          <button id="back-to-login-btn" class="text-link">Sign In</button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="app-skeleton-loader" class="app-skeleton-loader" style="display: none;">
+    <div class="skeleton-logo-anim">
+      <i class="fas fa-utensils"></i>
+    </div>
+    <h2>Preparing Kitchen...</h2>
+    <div class="loading-bar-container">
+      <div class="loading-bar-fill"></div>
+    </div>
+    <p>Loading AI Chef, Recipes & Settings</p>
+  </div>
+
+  <div id="main-app" class="main-app" style="display: none;">
+    <div class="pages-container">
+      
+      <div id="home-page" class="page active">
+        <div class="home-header">
+          <h1 class="page-heading">Welcome to <span class="gradient-text">Cooking App</span></h1>
+          <p class="page-subheading">Discover amazing recipes and cook like a pro!</p>
+        </div>
+        <div class="feature-cards">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+            <h3>Recipe Library</h3>
+            <p>Thousands of recipes from around the world</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-robot"></i></div>
+            <h3>AI Chef Assistant</h3>
+            <p>Get personalized cooking guidance</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-users"></i></div>
+            <h3>Community</h3>
+            <p>Connect with fellow food lovers</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-heart"></i></div>
+            <h3>Save Favorites</h3>
+            <p>Keep track of your favorite recipes</p>
+          </div>
+        </div>
+        <div class="quick-actions">
+          <h2 class="section-title">Quick Actions</h2>
+          <div class="action-buttons">
+            <button class="action-btn" onclick="switchToAI()">
+              <i class="fas fa-comments"></i>
+              <span>Start Cooking with AI</span>
+            </button>
+            <button class="action-btn secondary">
+              <i class="fas fa-search"></i>
+              <span>Browse Recipes</span>
+            </button>
+          </div>
+        </div>
+        <div class="popular-recipes">
+          <h2 class="section-title">Popular Recipes Today</h2>
+          <div class="recipe-grid">
+            <div class="recipe-card">
+              <div class="recipe-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"><i class="fas fa-pizza-slice"></i></div>
+              <div class="recipe-info"><h4>Italian Pasta</h4><p><i class="fas fa-clock"></i> 30 mins</p></div>
+            </div>
+            <div class="recipe-card">
+              <div class="recipe-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"><i class="fas fa-pepper-hot"></i></div>
+              <div class="recipe-info"><h4>Spicy Curry</h4><p><i class="fas fa-clock"></i> 45 mins</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="ai-page" class="page">
+        <div class="landing-page" id="ai-landing" style="height: calc(100vh - 70px);">
+          <div class="landing-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+          </div>
+          <div class="landing-content">
+            <div class="chef-logo"><i class="fas fa-utensils"></i></div>
+            <h1 class="landing-title">ChefMaster AI</h1>
+            <p class="landing-subtitle">Your multilingual smart kitchen companion</p>
+            <button id="open-chat-btn" class="primary-fab">
+              <i class="fas fa-comments"></i>
+              <span class="fab-text">Start Cooking</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="chat-modal" class="modal-container" style="z-index: 105;">
+          <header class="top-app-bar">
+            <button id="menu-btn" class="icon-btn"><i class="fas fa-bars"></i></button>
+            <div class="app-bar-title"><i class="fas fa-utensils"></i><span>ChefMaster AI</span></div>
+            <div class="app-bar-actions">
+              <button id="translate-btn" class="icon-btn"><i class="fas fa-language"></i></button>
+              <button id="theme-toggle-btn" class="icon-btn"><i class="fas fa-moon"></i></button>
+              <button id="close-modal-btn" class="icon-btn"><i class="fas fa-times"></i></button>
+            </div>
+          </header>
+
+          <nav id="side-drawer" class="side-drawer">
+             <div class="drawer-header">
+                <div class="drawer-logo"><i class="fas fa-utensils"></i></div>
+                <h2>ChefMaster AI</h2>
+                <p>Your Kitchen Assistant</p>
+             </div>
+             <div class="drawer-content">
+                <div class="drawer-section">
+                   <h3 class="drawer-section-title">Quick Actions</h3>
+                   <button class="drawer-item" data-action="new-chat"><i class="fas fa-plus-circle"></i><span>New Conversation</span></button>
+                   <button class="drawer-item" data-action="clear-all"><i class="fas fa-trash-alt"></i><span>Clear All Chats</span></button>
+                </div>
+                <div class="drawer-section">
+                  <h3 class="drawer-section-title">Smart Features</h3>
+                  <button class="drawer-item" data-action="meal-planner"><i class="fas fa-calendar-alt"></i><span>Meal Planner</span></button>
+                  <button class="drawer-item" data-action="grocery-list"><i class="fas fa-shopping-cart"></i><span>Grocery List Generator</span></button>
+                </div>
+             </div>
+          </nav>
+          <div id="drawer-overlay" class="drawer-overlay"></div>
+
+          <div id="language-modal" class="language-modal">
+             <div class="language-modal-content">
+                <div class="language-modal-header">
+                   <h3>Select Language</h3>
+                   <button id="close-language-modal" class="icon-btn"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="language-options">
+                   <button class="language-option" data-lang="en"><i class="fas fa-globe"></i><span>English</span></button>
+                   <button class="language-option" data-lang="hi"><i class="fas fa-language"></i><span>हिन्दी</span></button>
+                   <button class="language-option" data-lang="hinglish"><i class="fas fa-comments"></i><span>Hinglish</span></button>
+                   <button class="language-option" data-lang="or"><i class="fas fa-language"></i><span>ଓଡ଼ିଆ (Odia)</span></button>
+                </div>
+             </div>
+          </div>
+
+          <div class="container">
+            <div class="welcome-screen">
+               <div class="welcome-animation"><i class="fas fa-utensils"></i></div>
+               <h1 class="welcome-heading">Namaste Chef!</h1>
+               <h4 class="welcome-subheading">Aaj kya pakayenge?</h4>
+               <div class="suggestions-container">
+                  <div class="suggestions-wrapper">
+                     <ul class="suggestions">
+                        <li class="suggestion-card" data-category="indian">
+                           <div class="suggestion-icon"><i class="fas fa-pepper-hot"></i></div>
+                           <div class="suggestion-content"><h6>Indian Cuisine</h6><p>Chicken tikka masala kaise banaye?</p></div>
+                        </li>
+                        <li class="suggestion-card" data-category="quick">
+                            <div class="suggestion-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="suggestion-content"><h6>Quick Meals</h6><p>15-minute stir-fry recipe</p></div>
+                         </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="chats-container"></div>
+            
+            <div class="prompt-container">
+               <div class="active-filters" style="display: none;"><div class="filter-chips" id="filter-chips"></div></div>
+               <div class="prompt-wrapper">
+                  <form action="#" class="prompt-form">
+                     <button type="button" class="icon-btn attach-btn"><i class="fas fa-image"></i><input type="file" id="image-upload" accept="image/*" style="display: none;"></button>
+                     <input type="text" placeholder="Ask me anything..." class="prompt-input" required />
+                     <div class="prompt-actions">
+                        <button id="voice-input-btn" type="button" class="icon-btn"><i class="fas fa-microphone"></i></button>
+                        <button id="stop-response-btn" type="button" class="icon-btn stop-btn"><i class="fas fa-stop-circle"></i></button>
+                        <button id="send-prompt-btn" class="icon-btn send-btn"><i class="fas fa-paper-plane"></i></button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="settings-page" class="page">
+        <div class="settings-container">
+          <h1 class="page-heading">Settings</h1>
+          <div class="settings-section">
+            <h2 class="section-title"><i class="fas fa-palette"></i>Themes</h2>
+            <div class="theme-cards">
+              <div class="theme-card active" data-theme="light">
+                <div class="theme-preview light-theme-preview"><div class="theme-preview-bar"></div><div class="theme-preview-content"></div></div>
+                <div class="theme-info"><h4>Light Theme</h4><i class="fas fa-check theme-check"></i></div>
+              </div>
+              <div class="theme-card" data-theme="dark">
+                <div class="theme-preview dark-theme-preview"><div class="theme-preview-bar"></div><div class="theme-preview-content"></div></div>
+                <div class="theme-info"><h4>Dark Theme</h4><i class="fas fa-check theme-check"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="settings-section">
+             <h2 class="section-title"><i class="fas fa-user-tie"></i>Developer</h2>
+             <div class="developer-card">
+                <div class="developer-avatar"><i class="fas fa-code"></i></div>
+                <div class="developer-info"><h3>Santosh Rana</h3><p class="developer-region">India 🇮🇳</p></div>
+             </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="profile-page" class="page">
+        <div class="profile-container">
+          <div class="profile-header">
+            <div class="profile-avatar-container">
+              <div id="user-avatar" class="profile-avatar"><i class="fas fa-user"></i></div>
+              <label for="avatar-upload" class="edit-avatar-btn"><i class="fas fa-camera"></i></label>
+              <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
+            </div>
+            <h2 id="user-name">User Name</h2>
+            <p id="user-email">user@example.com</p>
+          </div>
+          <div class="profile-actions">
+            <button class="profile-action-btn" id="edit-profile-btn"><i class="fas fa-edit"></i><span>Edit Profile</span></button>
+            <button id="logout-btn" class="profile-action-btn danger"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-page="home"><i class="fas fa-home"></i><span>Home</span></button>
+      <button class="nav-item" data-page="ai"><i class="fas fa-robot"></i><span>AI Chef</span></button>
+      <button class="nav-item" data-page="settings"><i class="fas fa-cog"></i><span>Settings</span></button>
+      <button class="nav-item" data-page="profile"><i class="fas fa-user"></i><span>Profile</span></button>
+    </nav>
+  </div>
+
+  <div id="snackbar" class="snackbar"><i class="fas fa-check-circle"></i><span id="snackbar-message"></span></div>
+  <div id="loading-overlay" class="loading-overlay"><div class="loading-spinner"><i class="fas fa-utensils fa-spin"></i></div></div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="script.js"></script>
+  <script src="ai-script.js"></script>
+</body>
+</html>

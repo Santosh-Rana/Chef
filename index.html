@@ -2,18 +2,213 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Cooking App - Chef Master AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#FF6B35">
+  <!-- APK के लिए important meta tags -->
+<meta http-equiv="Content-Security-Policy" 
+      content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval' data: gap: https://ssl.gstatic.com 'unsafe-eval'; 
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+               media-src *; 
+               img-src 'self' data: content: https:; 
+               connect-src 'self' https: wss:;">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
   
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <title>Chef Master AI - Smart Cooking App</title>
   
-  <link rel="stylesheet" href="ai-style.css" /> 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+
+  
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="ai-style.css" />
+  <link rel="stylesheet" href="features.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  
+  <style>
+
+
+
+/* Material Icons के लिए CSS */
+.material-icons-round {
+  font-family: 'Material Icons Round';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Font Awesome classes को Material Icons में replace करने के लिए */
+.fas, .fab, .fa {
+  font-family: 'Material Icons Round' !important;
+  font-weight: normal;
+}
+
+/* Icon mapping */
+.fa-home:before { content: "home"; }
+.fa-book:before { content: "menu_book"; }
+.fa-robot:before { content: "smart_toy"; }
+.fa-clock:before { content: "access_time"; }
+.fa-user:before { content: "person"; }
+.fa-cog:before { content: "settings"; }
+.fa-utensils:before { content: "restaurant"; }
+.fa-search:before { content: "search"; }
+.fa-bars:before { content: "menu"; }
+.fa-times:before { content: "close"; }
+.fa-envelope:before { content: "mail"; }
+.fa-lock:before { content: "lock"; }
+.fa-sign-in-alt:before { content: "login"; }
+.fa-user-plus:before { content: "person_add"; }
+.fa-paper-plane:before { content: "send"; }
+.fa-google:before { content: "google"; }
+.fa-palette:before { content: "palette"; }
+.fa-check:before { content: "check"; }
+.fa-edit:before { content: "edit"; }
+.fa-sign-out-alt:before { content: "logout"; }
+.fa-camera:before { content: "camera_alt"; }
+.fa-bolt:before { content: "bolt"; }
+.fa-bookmark:before { content: "bookmark"; }
+.fa-star:before { content: "star"; }
+.fa-th-large:before { content: "apps"; }
+.fa-pepper-hot:before { content: "local_fire_department"; }
+.fa-bowl-rice:before { content: "rice_bowl"; }
+.fa-pizza-slice:before { content: "local_pizza"; }
+.fa-burger:before { content: "lunch_dining"; }
+.fa-play:before { content: "play_arrow"; }
+.fa-pause:before { content: "pause"; }
+.fa-redo:before { content: "refresh"; }
+.fa-volume-up:before { content: "volume_up"; }
+.fa-language:before { content: "language"; }
+.fa-moon:before { content: "dark_mode"; }
+.fa-sun:before { content: "light_mode"; }
+.fa-comments:before { content: "chat"; }
+.fa-image:before { content: "image"; }
+.fa-microphone:before { content: "mic"; }
+.fa-stop-circle:before { content: "stop_circle"; }
+.fa-plus-circle:before { content: "add_circle"; }
+.fa-trash-alt:before { content: "delete"; }
+.fa-calendar-alt:before { content: "calendar_today"; }
+.fa-shopping-cart:before { content: "shopping_cart"; }
+.fa-eye:before { content: "visibility"; }
+.fa-check-circle:before { content: "check_circle"; }
+.fa-spinner:before { content: "autorenew"; }
+.fa-copy:before { content: "content_copy"; }
+.fa-whatsapp:before { content: "whatsapp"; }
+.fa-birthday-cake:before { content: "cake"; }
+.fa-leaf:before { content: "eco"; }
+.fa-bacon:before { content: "set_meal"; }
+.fa-pot-food:before { content: "soup_kitchen"; }
+.fa-glass-water:before { content: "water"; }
+.fa-champagne-glasses:before { content: "celebration"; }
+.fa-code:before { content: "code"; }
+.fa-globe:before { content: "public"; }
+.fa-fire:before { content: "local_fire_department"; }
+.fa-users:before { content: "people"; }
+.fa-list:before { content: "list"; }
+.fa-chevron-down:before { content: "expand_more"; }
+.fa-bell:before { content: "notifications"; }
+.fa-music:before { content: "music_note"; }
+.fa-volume-high:before { content: "volume_up"; }
+.fa-bell-concierge:before { content: "notifications_active"; }
+.fa-volume-xmark:before { content: "volume_off"; }
+.fa-shield-halved:before { content: "shield"; }
+.fa-instagram:before { content: "photo_camera"; }
+.fa-x-twitter:before { content: "tag"; }
+.fa-phone:before { content: "phone"; }
+    /* Native App Optimizations */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    
+    input, textarea {
+      -webkit-user-select: text;
+      user-select: text;
+    }
+    
+    body {
+      overscroll-behavior: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Custom Splash Screen (Prevents loop) */
+
+    /* Fix for Material Icons Italic/Oblique Issue */
+.material-icons-round, 
+.material-icons,
+.fas, .fab, .fa {
+  font-family: 'Material Icons Round' !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  font-feature-settings: 'liga' 1;
+  font-variant: normal !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  word-wrap: normal !important;
+  white-space: nowrap !important;
+  direction: ltr !important;
+  
+  /* Support for all WebKit browsers */
+  -webkit-font-smoothing: antialiased !important;
+  
+  /* Support for Safari and Chrome */
+  text-rendering: optimizeLegibility !important;
+  
+  /* Support for Firefox */
+  -moz-osx-font-smoothing: grayscale !important;
+  
+  /* Support for IE */
+  font-feature-settings: 'liga' !important;
+}
+
+/* Reset font-style for all icon containers */
+i, 
+.icon-btn,
+.nav-item i,
+.suggestion-icon i,
+.message-avatar i,
+.quick-access-card i,
+.category-chip i {
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
+
+/* Specific fix for navigation icons */
+.bottom-nav .nav-item i {
+  font-family: 'Material Icons Round' !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 24px !important;
+}
+
+/* Fix for input group icons */
+.input-group i {
+  font-family: 'Material Icons Round' !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
+  </style>
 </head>
 <body>
 
-  <div id="auth-screen" class="auth-screen">
+  <!-- Auth Screen -->
+  <div id="auth-screen" class="auth-screen" style="display: none;">
     <div class="auth-background">
       <div class="gradient-orb orb-1"></div>
       <div class="gradient-orb orb-2"></div>
@@ -24,9 +219,10 @@
       <div class="auth-logo">
         <i class="fas fa-utensils"></i>
       </div>
-      <h1 class="auth-title">Cooking App</h1>
-      <p class="auth-subtitle">with Chef Master AI</p>
+      <h1 class="auth-title">Chef Master AI</h1>
+      <p class="auth-subtitle">Smart Cooking Companion</p>
       
+      <!-- Login Form -->
       <div id="login-form" class="auth-form">
         <h2>Welcome Back!</h2>
         <p class="form-desc">Sign in to continue cooking</p>
@@ -54,6 +250,7 @@
         </p>
       </div>
       
+      <!-- Signup Form -->
       <div id="signup-form" class="auth-form" style="display: none;">
         <h2>Create Account</h2>
         <p class="form-desc">Join the cooking community</p>
@@ -84,6 +281,7 @@
         </p>
       </div>
 
+      <!-- Forgot Password Form -->
       <div id="forgot-password-form" class="auth-form" style="display: none;">
         <h2>Reset Password</h2>
         <p class="form-desc">Enter your email to reset password</p>
@@ -103,6 +301,7 @@
     </div>
   </div>
 
+  <!-- App Skeleton Loader -->
   <div id="app-skeleton-loader" class="app-skeleton-loader" style="display: none;">
     <div class="skeleton-logo-anim">
       <i class="fas fa-utensils"></i>
@@ -114,64 +313,219 @@
     <p>Loading AI Chef, Recipes & Settings</p>
   </div>
 
+  <!-- Main App -->
   <div id="main-app" class="main-app" style="display: none;">
     <div class="pages-container">
       
+      <!-- Home Page -->
       <div id="home-page" class="page active">
         <div class="home-header">
-          <h1 class="page-heading">Welcome to <span class="gradient-text">Cooking App</span></h1>
+          <h1 class="page-heading">Welcome to <span class="gradient-text">Chef Master AI</span></h1>
           <p class="page-subheading">Discover amazing recipes and cook like a pro!</p>
         </div>
-        <div class="feature-cards">
-          <div class="feature-card">
-            <div class="feature-icon"><i class="fas fa-book-open"></i></div>
-            <h3>Recipe Library</h3>
-            <p>Thousands of recipes from around the world</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon"><i class="fas fa-robot"></i></div>
-            <h3>AI Chef Assistant</h3>
-            <p>Get personalized cooking guidance</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon"><i class="fas fa-users"></i></div>
-            <h3>Community</h3>
-            <p>Connect with fellow food lovers</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon"><i class="fas fa-heart"></i></div>
-            <h3>Save Favorites</h3>
-            <p>Keep track of your favorite recipes</p>
-          </div>
-        </div>
-        <div class="quick-actions">
-          <h2 class="section-title">Quick Actions</h2>
-          <div class="action-buttons">
-            <button class="action-btn" onclick="switchToAI()">
-              <i class="fas fa-comments"></i>
-              <span>Start Cooking with AI</span>
+
+        <!-- Quick Access Features -->
+        <div class="quick-access-section">
+          <h2 class="section-title"><i class="fas fa-bolt"></i> Quick Actions</h2>
+          <div class="quick-access-grid">
+            <button class="quick-access-card" onclick="switchToAI()">
+              <i class="fas fa-robot"></i>
+              <span>AI Chef</span>
             </button>
-            <button class="action-btn secondary">
-              <i class="fas fa-search"></i>
-              <span>Browse Recipes</span>
+            <button class="quick-access-card" onclick="switchToRecipes()">
+              <i class="fas fa-book"></i>
+              <span>Recipes</span>
+            </button>
+            <button class="quick-access-card" onclick="openTimer()">
+              <i class="fas fa-clock"></i>
+              <span>Timer</span>
+            </button>
+            <button class="quick-access-card" onclick="showSavedRecipes()">
+              <i class="fas fa-bookmark"></i>
+              <span>Saved</span>
             </button>
           </div>
         </div>
-        <div class="popular-recipes">
-          <h2 class="section-title">Popular Recipes Today</h2>
-          <div class="recipe-grid">
-            <div class="recipe-card">
-              <div class="recipe-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"><i class="fas fa-pizza-slice"></i></div>
-              <div class="recipe-info"><h4>Italian Pasta</h4><p><i class="fas fa-clock"></i> 30 mins</p></div>
-            </div>
-            <div class="recipe-card">
-              <div class="recipe-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"><i class="fas fa-pepper-hot"></i></div>
-              <div class="recipe-info"><h4>Spicy Curry</h4><p><i class="fas fa-clock"></i> 45 mins</p></div>
-            </div>
+
+        <!-- Daily Featured Dishes -->
+        <div class="daily-dishes-section">
+          <h2 class="section-title"><i class="fas fa-star"></i> Today's Specials</h2>
+          <div class="daily-dishes-carousel" id="daily-dishes">
+            <!-- Will be populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Popular Categories -->
+        <div class="categories-section">
+          <h2 class="section-title"><i class="fas fa-th-large"></i> Popular Categories</h2>
+          <div class="category-chips">
+            <button class="category-chip" onclick="filterRecipes('indian')">
+              <i class="fas fa-pepper-hot"></i> Indian
+            </button>
+            <button class="category-chip" onclick="filterRecipes('chinese')">
+              <i class="fas fa-bowl-rice"></i> Chinese
+            </button>
+            <button class="category-chip" onclick="filterRecipes('italian')">
+              <i class="fas fa-pizza-slice"></i> Italian
+            </button>
+            <button class="category-chip" onclick="filterRecipes('western')">
+              <i class="fas fa-burger"></i> Western
+            </button>
           </div>
         </div>
       </div>
 
+      <!-- Recipe Library Page -->
+      <div id="recipes-page" class="page">
+        <div class="recipes-header">
+          <h1 class="page-heading"><i class="fas fa-book-open"></i> Recipe Library</h1>
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" id="recipe-search" placeholder="Search recipes..." />
+          </div>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-category="all">All</button>
+          <button class="filter-tab" data-category="indian">Indian</button>
+          <button class="filter-tab" data-category="chinese">Chinese</button>
+          <button class="filter-tab" data-category="italian">Italian</button>
+          <button class="filter-tab" data-category="western">Western</button>
+        </div>
+
+        <!-- Recipe Grid -->
+        <div class="recipes-grid" id="recipes-grid">
+          <!-- Will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Recipe Detail Modal -->
+      <div id="recipe-detail-modal" class="recipe-detail-modal">
+        <div class="recipe-detail-content">
+          <button class="close-detail-btn" onclick="closeRecipeDetail()">
+            <i class="fas fa-times"></i>
+          </button>
+          <div id="recipe-detail-body">
+            <!-- Will be populated dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Timer Page -->
+      <div id="timer-page" class="page">
+        <div class="timer-container">
+          <h1 class="page-heading"><i class="fas fa-clock"></i> Cooking Timer</h1>
+          
+          <div class="timer-display">
+            <div class="time-circle">
+              <svg class="timer-svg" viewBox="0 0 200 200">
+                <circle class="timer-circle-bg" cx="100" cy="100" r="90"></circle>
+                <circle class="timer-circle-progress" cx="100" cy="100" r="90" id="timer-progress"></circle>
+              </svg>
+              <div class="timer-text">
+                <span id="timer-display">00:00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timer-presets">
+            <h3>Quick Presets</h3>
+            <div class="preset-buttons">
+              <button class="preset-btn" onclick="setTimer(300)">5 min</button>
+              <button class="preset-btn" onclick="setTimer(600)">10 min</button>
+              <button class="preset-btn" onclick="setTimer(900)">15 min</button>
+              <button class="preset-btn" onclick="setTimer(1200)">20 min</button>
+              <button class="preset-btn" onclick="setTimer(1800)">30 min</button>
+              <button class="preset-btn" onclick="setTimer(3600)">60 min</button>
+            </div>
+          </div>
+
+          <div class="timer-custom">
+            <h3>Custom Timer</h3>
+            <div class="time-inputs">
+              <div class="time-input-group">
+                <input type="number" id="timer-minutes" min="0" max="99" value="0" placeholder="MM" />
+                <label>Minutes</label>
+              </div>
+              <div class="time-input-group">
+                <input type="number" id="timer-seconds" min="0" max="59" value="0" placeholder="SS" />
+                <label>Seconds</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="timer-controls">
+            <button class="timer-btn start-btn" id="start-timer-btn" onclick="startTimer()">
+              <i class="fas fa-play"></i> Start
+            </button>
+            <button class="timer-btn pause-btn" id="pause-timer-btn" onclick="pauseTimer()" style="display: none;">
+              <i class="fas fa-pause"></i> Pause
+            </button>
+            <button class="timer-btn reset-btn" onclick="resetTimer()">
+              <i class="fas fa-redo"></i> Reset
+            </button>
+          </div>
+
+          <!-- Alarm Sound Selection - Modern UI -->
+          <div class="alarm-selection">
+            <h3><i class="fas fa-volume-up"></i> Alarm Sound</h3>
+            <div class="custom-alarm-select">
+              <div class="alarm-selected" id="alarm-selected">
+                <span id="selected-alarm-text">Bell</span>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="alarm-options" id="alarm-options">
+                <div class="alarm-option selected" data-value="bell">
+                  <i class="fas fa-bell"></i>
+                  <div class="alarm-option-info">
+                    <div class="alarm-option-name">Bell</div>
+                    <div class="alarm-option-desc">Classic bell sound</div>
+                  </div>
+                </div>
+                <div class="alarm-option" data-value="chime">
+                  <i class="fas fa-music"></i>
+                  <div class="alarm-option-info">
+                    <div class="alarm-option-name">Chime</div>
+                    <div class="alarm-option-desc">Gentle chime tones</div>
+                  </div>
+                </div>
+                <div class="alarm-option" data-value="beep">
+                  <i class="fas fa-volume-high"></i>
+                  <div class="alarm-option-info">
+                    <div class="alarm-option-name">Beep</div>
+                    <div class="alarm-option-desc">Short beep sounds</div>
+                  </div>
+                </div>
+                <div class="alarm-option" data-value="ding">
+                  <i class="fas fa-bell-concierge"></i>
+                  <div class="alarm-option-info">
+                    <div class="alarm-option-name">Ding</div>
+                    <div class="alarm-option-desc">Single ding tone</div>
+                  </div>
+                </div>
+                <div class="alarm-option" data-value="buzzer">
+                  <i class="fas fa-volume-xmark"></i>
+                  <div class="alarm-option-info">
+                    <div class="alarm-option-name">Buzzer</div>
+                    <div class="alarm-option-desc">Loud buzzer alarm</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Hidden select for compatibility -->
+            <select id="alarm-sound-select" class="alarm-select" style="display: none;">
+              <option value="bell">Bell</option>
+              <option value="chime">Chime</option>
+              <option value="beep">Beep</option>
+              <option value="ding">Ding</option>
+              <option value="buzzer">Buzzer</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Chef Page -->
       <div id="ai-page" class="page">
         <div class="landing-page" id="ai-landing" style="height: calc(100vh - 70px);">
           <div class="landing-background">
@@ -190,6 +544,7 @@
           </div>
         </div>
 
+        <!-- AI Chat Modal -->
         <div id="chat-modal" class="modal-container" style="z-index: 105;">
           <header class="top-app-bar">
             <button id="menu-btn" class="icon-btn"><i class="fas fa-bars"></i></button>
@@ -201,6 +556,7 @@
             </div>
           </header>
 
+          <!-- Side Drawer with Saved Recipes -->
           <nav id="side-drawer" class="side-drawer">
              <div class="drawer-header">
                 <div class="drawer-logo"><i class="fas fa-utensils"></i></div>
@@ -209,6 +565,12 @@
              </div>
              <div class="drawer-content">
                 <div class="drawer-section">
+                   <h3 class="drawer-section-title"><i class="fas fa-bookmark"></i> Saved Recipes</h3>
+                   <div id="saved-recipes-list" class="saved-recipes-container">
+                     <!-- Saved recipes will appear here -->
+                   </div>
+                </div>
+                <div class="drawer-section">
                    <h3 class="drawer-section-title">Quick Actions</h3>
                    <button class="drawer-item" data-action="new-chat"><i class="fas fa-plus-circle"></i><span>New Conversation</span></button>
                    <button class="drawer-item" data-action="clear-all"><i class="fas fa-trash-alt"></i><span>Clear All Chats</span></button>
@@ -216,12 +578,13 @@
                 <div class="drawer-section">
                   <h3 class="drawer-section-title">Smart Features</h3>
                   <button class="drawer-item" data-action="meal-planner"><i class="fas fa-calendar-alt"></i><span>Meal Planner</span></button>
-                  <button class="drawer-item" data-action="grocery-list"><i class="fas fa-shopping-cart"></i><span>Grocery List Generator</span></button>
+                  <button class="drawer-item" data-action="grocery-list"><i class="fas fa-shopping-cart"></i><span>Grocery List</span></button>
                 </div>
              </div>
           </nav>
           <div id="drawer-overlay" class="drawer-overlay"></div>
 
+          <!-- Language Modal -->
           <div id="language-modal" class="language-modal">
              <div class="language-modal-content">
                 <div class="language-modal-header">
@@ -232,11 +595,12 @@
                    <button class="language-option" data-lang="en"><i class="fas fa-globe"></i><span>English</span></button>
                    <button class="language-option" data-lang="hi"><i class="fas fa-language"></i><span>हिन्दी</span></button>
                    <button class="language-option" data-lang="hinglish"><i class="fas fa-comments"></i><span>Hinglish</span></button>
-                   <button class="language-option" data-lang="or"><i class="fas fa-language"></i><span>ଓଡ଼ିଆ (Odia)</span></button>
+                   <button class="language-option" data-lang="or"><i class="fas fa-language"></i>Odia<span></span></button>
                 </div>
              </div>
           </div>
 
+          <!-- Chat Container -->
           <div class="container">
             <div class="welcome-screen">
                <div class="welcome-animation"><i class="fas fa-utensils"></i></div>
@@ -259,6 +623,7 @@
             </div>
             <div class="chats-container"></div>
             
+            <!-- Prompt Input -->
             <div class="prompt-container">
                <div class="active-filters" style="display: none;"><div class="filter-chips" id="filter-chips"></div></div>
                <div class="prompt-wrapper">
@@ -276,65 +641,211 @@
           </div>
         </div>
       </div>
+
+      <!-- Settings Page -->
       <div id="settings-page" class="page">
         <div class="settings-container">
-          <h1 class="page-heading">Settings</h1>
+          <h1 class="page-heading"><i class="fas fa-cog"></i> Settings</h1>
           <div class="settings-section">
-            <h2 class="section-title"><i class="fas fa-palette"></i>Themes</h2>
+            <h2 class="section-title"><i class="fas fa-palette"></i> Themes</h2>
             <div class="theme-cards">
               <div class="theme-card active" data-theme="light">
-                <div class="theme-preview light-theme-preview"><div class="theme-preview-bar"></div><div class="theme-preview-content"></div></div>
-                <div class="theme-info"><h4>Light Theme</h4><i class="fas fa-check theme-check"></i></div>
+                <div class="theme-preview light-theme-preview">
+                  <div class="theme-preview-bar"></div>
+                  <div class="theme-preview-content"></div>
+                </div>
+                <div class="theme-info">
+                  <h4>Light Theme</h4>
+                  <i class="fas fa-check theme-check"></i>
+                </div>
               </div>
               <div class="theme-card" data-theme="dark">
-                <div class="theme-preview dark-theme-preview"><div class="theme-preview-bar"></div><div class="theme-preview-content"></div></div>
-                <div class="theme-info"><h4>Dark Theme</h4><i class="fas fa-check theme-check"></i></div>
+                <div class="theme-preview dark-theme-preview">
+                  <div class="theme-preview-bar"></div>
+                  <div class="theme-preview-content"></div>
+                </div>
+                <div class="theme-info">
+                  <h4>Dark Theme</h4>
+                  <i class="fas fa-check theme-check"></i>
+                </div>
               </div>
             </div>
           </div>
           <div class="settings-section">
-             <h2 class="section-title"><i class="fas fa-user-tie"></i>Developer</h2>
+             <h2 class="section-title"><i class="fas fa-user-tie"></i> Developer</h2>
              <div class="developer-card">
                 <div class="developer-avatar"><i class="fas fa-code"></i></div>
-                <div class="developer-info"><h3>Santosh Rana</h3><p class="developer-region">India 🇮🇳</p></div>
+                <div class="developer-info">
+                  <h3>Santosh Rana</h3>
+                  <p class="developer-region">India 🇮🇳</p>
+                </div>
              </div>
           </div>
         </div>
       </div>
 
+      <!-- Profile Page - Modern Design -->
       <div id="profile-page" class="page">
         <div class="profile-container">
+          <!-- Profile Header -->
           <div class="profile-header">
             <div class="profile-avatar-container">
               <div id="user-avatar" class="profile-avatar"><i class="fas fa-user"></i></div>
               <label for="avatar-upload" class="edit-avatar-btn"><i class="fas fa-camera"></i></label>
               <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
             </div>
-            <h2 id="user-name">User Name</h2>
+            <h2 id="user-name" contenteditable="false">User Name</h2>
             <p id="user-email">user@example.com</p>
           </div>
+
+          <!-- Quick Actions -->
           <div class="profile-actions">
-            <button class="profile-action-btn" id="edit-profile-btn"><i class="fas fa-edit"></i><span>Edit Profile</span></button>
-            <button id="logout-btn" class="profile-action-btn danger"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></button>
+            <button class="profile-action-btn" id="edit-profile-btn">
+              <i class="fas fa-edit"></i><span>Edit Name</span>
+            </button>
           </div>
+
+          <!-- Settings Section -->
+          <div class="settings-group">
+            <h3 class="settings-group-title">Appearance</h3>
+            <div class="settings-card">
+              <div class="settings-item">
+                <div class="settings-item-left">
+                  <div class="settings-item-icon">
+                    <i class="fas fa-palette"></i>
+                  </div>
+                  <div class="settings-item-info">
+                    <div class="settings-item-title">Theme</div>
+                    <div class="settings-item-desc">Choose your preferred theme</div>
+                  </div>
+                </div>
+                <div class="settings-item-right">
+                  <div class="theme-selector">
+                    <div class="theme-option theme-light selected" data-theme="light" title="Light Theme"></div>
+                    <div class="theme-option theme-dark" data-theme="dark" title="Dark Theme"></div>
+                    <div class="theme-option theme-ocean" data-theme="ocean" title="Ocean Theme"></div>
+                    <div class="theme-option theme-sunset" data-theme="sunset" title="Sunset Theme"></div>
+                    <div class="theme-option theme-forest" data-theme="forest" title="Forest Theme"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Developer Info -->
+          <div class="settings-group">
+            <h3 class="settings-group-title">Developer</h3>
+            <div class="developer-card">
+              <div class="developer-avatar">
+                <i class="fas fa-code"></i>
+              </div>
+              <div class="developer-info">
+                <h3>Santosh Rana</h3>
+                <p class="developer-region">🇮🇳 India</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- App Info -->
+          <div class="settings-group">
+            <h3 class="settings-group-title">App Information</h3>
+            <div class="app-info-card">
+              <div class="app-info-row">
+                <span class="app-info-label">Version</span>
+                <span class="app-info-value">1.5.2</span>
+              </div>
+              <div class="app-info-row">
+                <span class="app-info-label">Last Updated</span>
+                <span class="app-info-value">Jan 2026</span>
+              </div>
+              <div class="app-info-row">
+                <span class="app-info-label">Platform</span>
+                <span class="app-info-value">Android</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Privacy Policy -->
+          <div class="settings-group">
+            <h3 class="settings-group-title">Privacy & Legal</h3>
+            <div class="privacy-policy">
+              <h3><i class="fas fa-shield-halved"></i> Privacy Policy</h3>
+              <p>ChefMaster AI respects your privacy. We collect minimal data necessary for app functionality including your email for authentication and recipe preferences to provide personalized recommendations.</p>
+              <p>Your data is stored securely using Firebase Authentication and is never shared with third parties. You can delete your account and all associated data at any time.</p>
+              <p>By using this app, you agree to our data collection practices. For questions, contact us at ranasantosh3741@gmail.com</p>
+            </div>
+          </div>
+
+          <!-- Connect With Us -->
+          <div class="settings-group">
+            <h3 class="settings-group-title">Connect With Us</h3>
+            <div class="social-links">
+              <a href="https://www.instagram.com/santosh_rana_23/" class="social-link instagram" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://x.com/Santosh_code143" class="social-link twitter" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-x-twitter"></i>
+              </a>
+              <a href="mailto:ranasantosh3741@gmail.com" class="social-link email">
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a href="tel:+917855091829" class="social-link phone">
+                <i class="fas fa-phone"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Logout Button -->
+          <div class="profile-actions" style="margin-top: 20px;">
+            <button id="logout-btn" class="profile-action-btn danger">
+              <i class="fas fa-sign-out-alt"></i><span>Log Out</span>
+            </button>
+          </div>
+
+          <!-- Bottom spacing -->
+          <div style="height: 80px;"></div>
         </div>
       </div>
     </div>
 
+    <!-- Bottom Navigation -->
     <nav class="bottom-nav">
-      <button class="nav-item active" data-page="home"><i class="fas fa-home"></i><span>Home</span></button>
-      <button class="nav-item" data-page="ai"><i class="fas fa-robot"></i><span>AI Chef</span></button>
-      <button class="nav-item" data-page="settings"><i class="fas fa-cog"></i><span>Settings</span></button>
-      <button class="nav-item" data-page="profile"><i class="fas fa-user"></i><span>Profile</span></button>
+      <button class="nav-item active" data-page="home">
+        <i class="fas fa-home"></i><span>Home</span>
+      </button>
+      <button class="nav-item" data-page="recipes">
+        <i class="fas fa-book"></i><span>Recipes</span>
+      </button>
+      <button class="nav-item" data-page="ai">
+        <i class="fas fa-robot"></i><span>AI Chef</span>
+      </button>
+      <button class="nav-item" data-page="timer">
+        <i class="fas fa-clock"></i><span>Timer</span>
+      </button>
+      <button class="nav-item" data-page="profile">
+        <i class="fas fa-user"></i><span>Profile</span>
+      </button>
     </nav>
   </div>
 
-  <div id="snackbar" class="snackbar"><i class="fas fa-check-circle"></i><span id="snackbar-message"></span></div>
-  <div id="loading-overlay" class="loading-overlay"><div class="loading-spinner"><i class="fas fa-utensils fa-spin"></i></div></div>
+  <!-- Global UI Elements -->
+  <div id="snackbar" class="snackbar">
+    <i class="fas fa-check-circle"></i>
+    <span id="snackbar-message"></span>
+  </div>
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="loading-spinner"><i class="fas fa-utensils fa-spin"></i></div>
+  </div>
 
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <!-- Firebase SDK -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  
+  <!-- App Scripts -->
+  <script src="recipes-data.js"></script>
   <script src="script.js"></script>
+  <script src="timer.js"></script>
   <script src="ai-script.js"></script>
+  <script src="enhanced-features.js"></script>
 </body>
 </html>

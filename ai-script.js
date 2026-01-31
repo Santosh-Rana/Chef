@@ -27,7 +27,7 @@ const filterChipsDiv = document.querySelector("#filter-chips");
 const voiceInputBtn = document.querySelector("#voice-input-btn");
 
 // ========== API Configuration ==========
-const API_KEY = "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";
+const API_KEY = "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";
 const API_URL = "https://openrouter.ai/api/v1/chat/completions";
 const MODEL_NAME = "deepseek/deepseek-chat";
 
@@ -569,17 +569,44 @@ async function streamResponse(text, textElement, botMsgDiv, originalText) {
 
 // ========== SAVED RECIPES FUNCTIONALITY ==========
 function saveRecipe(recipeText) {
+  // Generate recipe image based on content
+  const categoryImages = {
+    indian: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500",
+    chinese: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=500",
+    italian: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500",
+    western: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500"
+  };
+  
+  // Detect category
+  let recipeImage = "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500";
+  const lowerText = recipeText.toLowerCase();
+  if (lowerText.includes('masala') || lowerText.includes('curry') || lowerText.includes('tikka') || lowerText.includes('paneer')) {
+    recipeImage = categoryImages.indian;
+  } else if (lowerText.includes('noodles') || lowerText.includes('fried rice') || lowerText.includes('manchurian')) {
+    recipeImage = categoryImages.chinese;
+  } else if (lowerText.includes('pasta') || lowerText.includes('pizza') || lowerText.includes('risotto') || lowerText.includes('lasagna')) {
+    recipeImage = categoryImages.italian;
+  } else if (lowerText.includes('burger') || lowerText.includes('steak') || lowerText.includes('bbq') || lowerText.includes('wings')) {
+    recipeImage = categoryImages.western;
+  }
+  
   const recipe = {
-    id: Date.now(),
+    id: Date.now().toString(),
+    name: extractRecipeTitle(recipeText),
     title: extractRecipeTitle(recipeText),
     content: recipeText,
+    image: recipeImage,
     date: new Date().toLocaleDateString(),
+    timestamp: new Date().toISOString(),
     tags: extractTags()
   };
   
   savedRecipes.unshift(recipe);
   localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
   showToast(getTranslation("recipeSaved"));
+  
+  // Update saved recipes list in drawer
+  updateSavedRecipesList();
 }
 
 function extractRecipeTitle(text) {

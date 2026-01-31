@@ -343,8 +343,7 @@ div::-webkit-scrollbar {
   padding: 12px 16px;
   background: var(--md-sys-color-surface);
   border-bottom: 1px solid var(--md-sys-color-outline-variant);
-  box-shadow: var(--md-sys-elevation-1);
-  border-radius: 5px 5px 30px 30px;
+  border-radius: 10px;
 }
 
 .app-bar-title {
@@ -1945,13 +1944,15 @@ body.bot-responding .send-btn {
 /* Prompt container ko sahi jagah set karein */
 .prompt-container {
     position: fixed;
-    bottom: 70px !important; /* Bottom Navigation ke theek upar */
+    bottom: 10px !important; /* Bottom Navigation ke theek upar */
     left: 0;
     width: 100%;
     background: var(--md-sys-color-surface);
     padding: 12px 16px;
     z-index: 1500 !important; /* Nav bar (2000) se niche, chat se upar */
     box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+    border-top: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 20px;
 }
 
 /* Sidebar (Drawer) ko sabse upar laayein */
@@ -1982,4 +1983,3 @@ body.bot-responding .send-btn {
     flex-direction: row-reverse; /* Icon aur text ko swap karne ke liye */
     max-width: 85%;
 }
-
